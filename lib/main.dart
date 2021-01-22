@@ -46,9 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: LightList(
-        address: '192.168.4.48',
-      ),
+      body: LightList(),
     );
   }
 }
