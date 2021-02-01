@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:sqflite/sqflite.dart';
-import 'db_util.dart';
-import 'profile.dart';
+import 'package:flutterHue/model/profile.dart';
+import 'package:flutterHue/database/db_utils.dart';
 
 /*
 *TODO - database shouldn't be initalized in every function call, best practices
@@ -9,8 +9,8 @@ import 'profile.dart';
 *works
 */
 
-class ProfileModel {
-  Future<int> insertProfile(Profile profile) async {
+class ProfileDao {
+  Future<int> insert(Profile profile) async {
     final db = await DBUtils.init();
     return await db.insert(
       'profile',
@@ -19,7 +19,7 @@ class ProfileModel {
     );
   }
 
-  Future<List<Profile>> getProfiles() async {
+  Future<List<Profile>> getAll() async {
     final db = await DBUtils.init();
     List<Map<String, dynamic>> maps = await db.query('profile');
     List<Profile> profiles = [];
